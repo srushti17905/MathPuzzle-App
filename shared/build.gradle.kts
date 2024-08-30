@@ -42,8 +42,8 @@ kotlin {
 
             // for resources
 
-            implementation(compose.components.resources)
 
+            implementation(compose.components.resources)
             
         }
         commonTest.dependencies {
@@ -68,6 +68,6 @@ android {
 
 compose.resources {
     publicResClass = true
-    packageOfResClass = "com.android.myapplication"
+    packageOfResClass = "com.example.my_shayari_app"
     generateResClass = always
 }
