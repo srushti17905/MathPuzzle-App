@@ -1,12 +1,14 @@
 package com.example.my_math_puzzle
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -16,6 +18,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.Navigator
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.background
 import com.example.my_shayari_app.bluebutton
@@ -28,106 +33,118 @@ import com.example.my_shayari_app.yellowbutton
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun myapp() {
+fun myapplication()
+{
+    Navigator(HomePage())
+}
 
-    Surface(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(Res.drawable.background),
-            contentDescription = null,
-            contentScale = ContentScale.FillBounds
-        )
-    }
+class HomePage : Screen {
+    @Composable
+    override fun Content() {
+        var navigator = LocalNavigator.current
 
-    Column(modifier = Modifier.fillMaxSize()) {
-
-        Row(modifier = Modifier.fillMaxSize().weight(2.8f)) {
-
-        }
-        Box(
-            contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()
-                .weight(.7f)
-        ) {
-
+        Surface(modifier = Modifier.fillMaxSize()) {
             Image(
-                painter = painterResource(Res.drawable.yellowbutton),
+                painter = painterResource(Res.drawable.background),
                 contentDescription = null,
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier.height(60.dp).width(170.dp)
+                contentScale = ContentScale.FillBounds
             )
-            button("PLAY")
         }
-        Box(
-            contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()
-                .weight(.7f)
-        ) {
 
-            Image(
-                painter = painterResource(Res.drawable.bluebutton),
-                contentDescription = null,
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier.height(60.dp).width(170.dp)
-            )
+        Column(modifier = Modifier.fillMaxSize()) {
 
-            button("LEVEL")
-        }
-        Box(
-            contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()
-                .weight(.7f)
-        ) {
+            Row(modifier = Modifier.fillMaxSize().weight(2.8f)) {
 
-            Image(
-                painter = painterResource(Res.drawable.redbutton),
-                contentDescription = null,
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier.height(60.dp).width(170.dp)
-            )
-
-            button("BUY PRO")
-        }
-        Row(modifier = Modifier.fillMaxSize().weight(1f)) {
-
-        }
-        Row(modifier = Modifier.fillMaxSize().weight(.8f)) {
-
+            }
             Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize().weight(.4f)
+                contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()
+                    .weight(.7f)
+            ) {
+                Image(
+                    painter = painterResource(Res.drawable.yellowbutton),
+                    contentDescription = null,
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier.height(60.dp).width(170.dp).clickable {
+
+                        navigator!!.push(BordPage())
+                    }
+                )
+                button("PLAY")
+            }
+            Box(
+                contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()
+                    .weight(.7f)
             ) {
 
                 Image(
-                    painter = painterResource(Res.drawable.share),
+                    painter = painterResource(Res.drawable.bluebutton),
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
-                    modifier = Modifier.height(40.dp).width(40.dp)
+                    modifier = Modifier.height(60.dp).width(170.dp)
                 )
+
+                button("LEVEL")
             }
             Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize().weight(.7f)
-            ) {4
-                Image(
-                    painter = painterResource(Res.drawable.purple),
-                    contentDescription = null,
-                    contentScale = ContentScale.FillBounds,
-                    modifier = Modifier.height(40.dp).width(120.dp)
-                )
-                button1("Privacy Policy")
-            }
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize().weight(.4f)
+                contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()
+                    .weight(.7f)
             ) {
 
                 Image(
-                    painter = painterResource(Res.drawable.mail),
+                    painter = painterResource(Res.drawable.redbutton),
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
-                    modifier = Modifier.height(40.dp).width(40.dp)
+                    modifier = Modifier.height(60.dp).width(170.dp)
                 )
+
+                button("BUY PRO")
+            }
+            Row(modifier = Modifier.fillMaxSize().weight(1f)) {
+
+            }
+            Row(modifier = Modifier.fillMaxSize().weight(.8f)) {
+
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier.fillMaxSize().weight(.4f)
+                ) {
+
+                    Image(
+                        painter = painterResource(Res.drawable.share),
+                        contentDescription = null,
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier.height(40.dp).width(40.dp)
+                    )
+                }
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier.fillMaxSize().weight(.7f)
+                ) {
+                    Image(
+                        painter = painterResource(Res.drawable.purple),
+                        contentDescription = null,
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier.height(40.dp).width(120.dp)
+                    )
+                    button1("Privacy Policy")
+                }
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier.fillMaxSize().weight(.4f)
+                ) {
+
+                    Image(
+                        painter = painterResource(Res.drawable.mail),
+                        contentDescription = null,
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier.height(40.dp).width(40.dp)
+                    )
+                }
             }
         }
     }
 }
+
 
 @Composable
 fun button(text: String ) {
