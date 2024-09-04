@@ -1,6 +1,7 @@
 package com.example.my_math_puzzle
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,6 +18,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.bluebutton
 import com.example.my_shayari_app.redbutton
@@ -27,72 +30,88 @@ import com.example.my_shayari_app.winninglogo
 import com.example.my_shayari_app.yellowbutton
 import org.jetbrains.compose.resources.painterResource
 
-@Composable
-fun win() {
-    Surface(modifier = Modifier.fillMaxSize())
-    {
-        Image(
-            painter = painterResource(Res.drawable.winningbackground),
-            contentDescription = null,
-            contentScale = ContentScale.FillBounds
-        )
-    }
 
-    Column(modifier = Modifier.fillMaxSize())
-    {
-        Row (modifier = Modifier.fillMaxSize().weight(.7f)){  }
+class win : Screen {
+    @Composable
+    override fun Content() {
 
-        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(.8f))
+        val navigator3 = LocalNavigator.current
+
+        Surface(modifier = Modifier.fillMaxSize())
         {
             Image(
-                painter = painterResource(Res.drawable.winniglevelcomplete1),
+                painter = painterResource(Res.drawable.winningbackground),
                 contentDescription = null,
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier.height(50.dp).width(220.dp)
+                contentScale = ContentScale.FillBounds
             )
         }
-        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(3f))
+
+        Column(modifier = Modifier.fillMaxSize())
         {
-            Image(
-                painter = painterResource(Res.drawable.winninglogo),
-                contentDescription = null,
-                contentScale = ContentScale.FillBounds, modifier = Modifier.height(270.dp).width(450.dp)
-            )
-        }
-        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(1f))
-        {
-            Image(
-                painter = painterResource(Res.drawable.yellowbutton),
-                contentDescription = null,
-                contentScale = ContentScale.FillBounds, modifier = Modifier.height(60.dp).width(180.dp)
-            )
-            winbutton("CONTINUE")
-        }
-        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(1f))
-        {
-            Image(
-                painter = painterResource(Res.drawable.bluebutton),
-                contentDescription = null,
-                contentScale = ContentScale.FillBounds, modifier = Modifier.height(60.dp).width(180.dp)
-            )
-            winbutton("MAIN MENU")
-        }
-        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(1f))
-        {
-            Image(
-                painter = painterResource(Res.drawable.redbutton),
-                contentDescription = null,
-                contentScale = ContentScale.FillBounds, modifier = Modifier.height(60.dp).width(180.dp)
-            )
-            winbutton("BUY PRO")
-        }
-        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(1f))
-        {
-            Image(
-                painter = painterResource(Res.drawable.share),
-                contentDescription = null,
-                contentScale = ContentScale.FillBounds, modifier = Modifier.height(50.dp).width(50.dp)
-            )
+            Row(modifier = Modifier.fillMaxSize().weight(.7f)) { }
+
+            Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(.8f))
+            {
+                Image(
+                    painter = painterResource(Res.drawable.winniglevelcomplete1),
+                    contentDescription = null,
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier.height(50.dp).width(210.dp)
+                )
+            }
+            Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(3f))
+            {
+                Image(
+                    painter = painterResource(Res.drawable.winninglogo),
+                    contentDescription = null,
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier.height(270.dp).width(420.dp)
+                )
+            }
+            Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(1f))
+            {
+                Image(
+                    painter = painterResource(Res.drawable.yellowbutton),
+                    contentDescription = null,
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier.height(60.dp).width(180.dp).clickable{
+                        navigator3!!.push(BordPage())
+                    }
+                )
+                winbutton("CONTINUE")
+            }
+            Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(1f))
+            {
+                Image(
+                    painter = painterResource(Res.drawable.bluebutton),
+                    contentDescription = null,
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier.height(60.dp).width(180.dp).clickable{
+                        navigator3!!.push(HomePage())
+                    }
+                )
+                winbutton("MAIN MENU")
+            }
+            Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(1f))
+            {
+                Image(
+                    painter = painterResource(Res.drawable.redbutton),
+                    contentDescription = null,
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier.height(60.dp).width(180.dp)
+                )
+                winbutton("BUY PRO")
+            }
+            Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(1f))
+            {
+                Image(
+                    painter = painterResource(Res.drawable.share),
+                    contentDescription = null,
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier.height(50.dp).width(50.dp)
+                )
+            }
+
         }
 
     }

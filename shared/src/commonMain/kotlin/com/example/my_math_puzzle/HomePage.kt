@@ -32,30 +32,22 @@ import com.example.my_shayari_app.yellowbutton
 //import com.android.myapplication.Res
 import org.jetbrains.compose.resources.painterResource
 
-@Composable
-fun myapplication()
-{
-    Navigator(HomePage())
-}
-
 class HomePage : Screen {
     @Composable
     override fun Content() {
-        var navigator = LocalNavigator.current
+        val navigator = LocalNavigator.current
 
         Surface(modifier = Modifier.fillMaxSize()) {
             Image(
                 painter = painterResource(Res.drawable.background),
                 contentDescription = null,
-                contentScale = ContentScale.FillBounds
-            )
+                contentScale = ContentScale.FillBounds)
         }
 
         Column(modifier = Modifier.fillMaxSize()) {
 
-            Row(modifier = Modifier.fillMaxSize().weight(2.8f)) {
+            Row(modifier = Modifier.fillMaxSize().weight(2.8f)) {}
 
-            }
             Box(
                 contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()
                     .weight(.7f)
@@ -64,8 +56,8 @@ class HomePage : Screen {
                     painter = painterResource(Res.drawable.yellowbutton),
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
-                    modifier = Modifier.height(60.dp).width(170.dp).clickable {
-
+                    modifier = Modifier.height(60.dp).width(170.dp).clickable
+                    {
                         navigator!!.push(BordPage())
                     }
                 )
@@ -75,46 +67,39 @@ class HomePage : Screen {
                 contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()
                     .weight(.7f)
             ) {
-
                 Image(
                     painter = painterResource(Res.drawable.bluebutton),
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(60.dp).width(170.dp)
                 )
-
                 button("LEVEL")
             }
             Box(
                 contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()
                     .weight(.7f)
             ) {
-
                 Image(
                     painter = painterResource(Res.drawable.redbutton),
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(60.dp).width(170.dp)
                 )
-
                 button("BUY PRO")
             }
-            Row(modifier = Modifier.fillMaxSize().weight(1f)) {
+            Row(modifier = Modifier.fillMaxSize().weight(1f)) {}
 
-            }
-            Row(modifier = Modifier.fillMaxSize().weight(.8f)) {
-
+            Row(modifier = Modifier.fillMaxSize().weight(.8f))
+            {
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxSize().weight(.4f)
                 ) {
-
                     Image(
                         painter = painterResource(Res.drawable.share),
                         contentDescription = null,
                         contentScale = ContentScale.FillBounds,
-                        modifier = Modifier.height(40.dp).width(40.dp)
-                    )
+                        modifier = Modifier.height(40.dp).width(40.dp))
                 }
                 Box(
                     contentAlignment = Alignment.Center,
@@ -132,13 +117,11 @@ class HomePage : Screen {
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxSize().weight(.4f)
                 ) {
-
                     Image(
                         painter = painterResource(Res.drawable.mail),
                         contentDescription = null,
                         contentScale = ContentScale.FillBounds,
-                        modifier = Modifier.height(40.dp).width(40.dp)
-                    )
+                        modifier = Modifier.height(40.dp).width(40.dp))
                 }
             }
         }
@@ -152,7 +135,6 @@ fun button(text: String ) {
 }
 
 @Composable
-fun button1(text: String)
-{
+fun button1(text: String) {
     Text(text = text, fontSize = 20.sp , color = Color.White)
 }
