@@ -33,16 +33,171 @@ import com.example.my_shayari_app.backspace
 import com.example.my_shayari_app.backspacebutton
 import com.example.my_shayari_app.button1
 import com.example.my_shayari_app.button2
+import com.example.my_shayari_app.leval1
+import com.example.my_shayari_app.leval10
+import com.example.my_shayari_app.leval11
+import com.example.my_shayari_app.leval12
+import com.example.my_shayari_app.leval13
+import com.example.my_shayari_app.leval14
+import com.example.my_shayari_app.leval15
+import com.example.my_shayari_app.leval16
+import com.example.my_shayari_app.leval17
+import com.example.my_shayari_app.leval18
+import com.example.my_shayari_app.leval19
+import com.example.my_shayari_app.leval2
+import com.example.my_shayari_app.leval20
+import com.example.my_shayari_app.leval21
+import com.example.my_shayari_app.leval22
+import com.example.my_shayari_app.leval23
+import com.example.my_shayari_app.leval24
+import com.example.my_shayari_app.leval25
+import com.example.my_shayari_app.leval27
+import com.example.my_shayari_app.leval28
+import com.example.my_shayari_app.leval29
+import com.example.my_shayari_app.leval3
+import com.example.my_shayari_app.leval30
+import com.example.my_shayari_app.leval31
+import com.example.my_shayari_app.leval32
+import com.example.my_shayari_app.leval33
+import com.example.my_shayari_app.leval34
+import com.example.my_shayari_app.leval35
+import com.example.my_shayari_app.leval36
+import com.example.my_shayari_app.leval37
+import com.example.my_shayari_app.leval38
+import com.example.my_shayari_app.leval39
+import com.example.my_shayari_app.leval4
+import com.example.my_shayari_app.leval40
+import com.example.my_shayari_app.leval41
+import com.example.my_shayari_app.leval42
+import com.example.my_shayari_app.leval43
+import com.example.my_shayari_app.leval44
+import com.example.my_shayari_app.leval45
+import com.example.my_shayari_app.leval46
+import com.example.my_shayari_app.leval47
+import com.example.my_shayari_app.leval48
+import com.example.my_shayari_app.leval49
+import com.example.my_shayari_app.leval5
+import com.example.my_shayari_app.leval50
+import com.example.my_shayari_app.leval51
+import com.example.my_shayari_app.leval52
+import com.example.my_shayari_app.leval53
+import com.example.my_shayari_app.leval54
+import com.example.my_shayari_app.leval55
+import com.example.my_shayari_app.leval56
+import com.example.my_shayari_app.leval57
+import com.example.my_shayari_app.leval58
+import com.example.my_shayari_app.leval59
+import com.example.my_shayari_app.leval6
+import com.example.my_shayari_app.leval60
+import com.example.my_shayari_app.leval61
+import com.example.my_shayari_app.leval62
+import com.example.my_shayari_app.leval63
+import com.example.my_shayari_app.leval64
+import com.example.my_shayari_app.leval65
+import com.example.my_shayari_app.leval66
+import com.example.my_shayari_app.leval67
+import com.example.my_shayari_app.leval68
+import com.example.my_shayari_app.leval69
+import com.example.my_shayari_app.leval7
+import com.example.my_shayari_app.leval70
+import com.example.my_shayari_app.leval71
+import com.example.my_shayari_app.leval72
+import com.example.my_shayari_app.leval73
+import com.example.my_shayari_app.leval74
+import com.example.my_shayari_app.leval75
+import com.example.my_shayari_app.leval8
+import com.example.my_shayari_app.leval9
 import com.example.my_shayari_app.plainyellowbutton
 import com.example.my_shayari_app.whiteline
 import com.example.my_shayari_app.whitepage
 import org.jetbrains.compose.resources.painterResource
+
+val star2 = mutableStateOf("")
+var cc : Int = 0
+
 
 class BordPage : Screen {
     @Composable
     override fun Content() {
 
         val navigator2 = LocalNavigator.current
+        var ar = arrayOf(
+            Res.drawable.leval1,
+            Res.drawable.leval2,
+            Res.drawable.leval3,
+            Res.drawable.leval4,
+            Res.drawable.leval5,
+            Res.drawable.leval6,
+            Res.drawable.leval7,
+            Res.drawable.leval7,
+            Res.drawable.leval8,
+            Res.drawable.leval9,
+            Res.drawable.leval10,
+            Res.drawable.leval11,
+            Res.drawable.leval12,
+            Res.drawable.leval13,
+            Res.drawable.leval14,
+            Res.drawable.leval15,
+            Res.drawable.leval16,
+            Res.drawable.leval17,
+            Res.drawable.leval18,
+            Res.drawable.leval19,
+            Res.drawable.leval20,
+            Res.drawable.leval21,
+            Res.drawable.leval22,
+            Res.drawable.leval23,
+            Res.drawable.leval24,
+            Res.drawable.leval25,
+            Res.drawable.leval27,
+            Res.drawable.leval28,
+            Res.drawable.leval29,
+            Res.drawable.leval30,
+            Res.drawable.leval31,
+            Res.drawable.leval32,
+            Res.drawable.leval33,
+            Res.drawable.leval34,
+            Res.drawable.leval35,
+            Res.drawable.leval36,
+            Res.drawable.leval37,
+            Res.drawable.leval38,
+            Res.drawable.leval39,
+            Res.drawable.leval40,
+            Res.drawable.leval41,
+            Res.drawable.leval42,
+            Res.drawable.leval43,
+            Res.drawable.leval44,
+            Res.drawable.leval45,
+            Res.drawable.leval46,
+            Res.drawable.leval47,
+            Res.drawable.leval48,
+            Res.drawable.leval49,
+            Res.drawable.leval50,
+            Res.drawable.leval51,
+            Res.drawable.leval52,
+            Res.drawable.leval53,
+            Res.drawable.leval54,
+            Res.drawable.leval55,
+            Res.drawable.leval56,
+            Res.drawable.leval57,
+            Res.drawable.leval58,
+            Res.drawable.leval59,
+            Res.drawable.leval60,
+            Res.drawable.leval61,
+            Res.drawable.leval62,
+            Res.drawable.leval63,
+            Res.drawable.leval64,
+            Res.drawable.leval65,
+            Res.drawable.leval66,
+            Res.drawable.leval67,
+            Res.drawable.leval68,
+            Res.drawable.leval69,
+            Res.drawable.leval70,
+            Res.drawable.leval71,
+            Res.drawable.leval72,
+            Res.drawable.leval73,
+            Res.drawable.leval74,
+            Res.drawable.leval75
+            )
 
         Surface(modifier = Modifier.fillMaxSize()) {
             Image(
@@ -70,7 +225,7 @@ class BordPage : Screen {
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxSize().weight(1.5f)
                 ) {
-                    squear1("Puzzle 1")
+                    squear1("Level 1")
                 }
                 Box(
                     contentAlignment = Alignment.Center,
@@ -86,34 +241,28 @@ class BordPage : Screen {
             }
             Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(4f)) {
 
-                Image(
-                    painter = painterResource(Res.drawable.whitepage),
-                    contentDescription = null,
-                    contentScale = ContentScale.FillBounds,
-                    modifier = Modifier.height(350.dp).width(320.dp)
-                )
+                    Image(
+                        painter = painterResource(ar[56]),
+                        contentDescription = null,
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier.height(350.dp).width(320.dp)
+                    )
+                cc++
             }
-            Row (modifier = Modifier.fillMaxSize().weight(.8f))
+            Row(modifier = Modifier.fillMaxSize().weight(.8f))
             {
-
-                     Box(
-                         contentAlignment = Alignment.Center,
-                         modifier = Modifier.fillMaxSize().weight(.8f)
-                     ) {
-                        Image(
-                              painter = painterResource(Res.drawable.whiteline),
-                              contentDescription = null,
-                              contentScale = ContentScale.FillBounds,
-                              modifier = Modifier.height(50.dp).width(310.dp)
-                        )
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier.fillMaxSize().weight(.8f)
+                ) {
+                    Row (modifier = Modifier.fillMaxSize()){  }
+                    Image(
+                        painter = painterResource(Res.drawable.whiteline),
+                        contentDescription = null,
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier.height(50.dp).width(310.dp)
+                    )
                     Text(text = s, fontSize = 30.sp, color = Color.Black)
-
-//                    Image(
-//                        painter = painterResource(Res.drawable.backspace),
-//                        contentDescription = null,
-//                        contentScale = ContentScale.FillBounds,
-//                        modifier = Modifier.height(30.dp).width(30.dp)
-//                    )
                 }
             }
             Row(modifier = Modifier.fillMaxSize().weight(.7f))

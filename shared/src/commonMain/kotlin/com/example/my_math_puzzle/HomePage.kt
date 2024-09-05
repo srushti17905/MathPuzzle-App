@@ -12,6 +12,7 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,6 +25,7 @@ import cafe.adriel.voyager.navigator.Navigator
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.background
 import com.example.my_shayari_app.bluebutton
+import com.example.my_shayari_app.leval1
 import com.example.my_shayari_app.mail
 import com.example.my_shayari_app.purple
 import com.example.my_shayari_app.redbutton
@@ -32,16 +34,20 @@ import com.example.my_shayari_app.yellowbutton
 //import com.android.myapplication.Res
 import org.jetbrains.compose.resources.painterResource
 
+val star1 = mutableStateOf("")
+
 class HomePage : Screen {
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.current
 
+
         Surface(modifier = Modifier.fillMaxSize()) {
             Image(
                 painter = painterResource(Res.drawable.background),
                 contentDescription = null,
-                contentScale = ContentScale.FillBounds)
+                contentScale = ContentScale.FillBounds
+            )
         }
 
         Column(modifier = Modifier.fillMaxSize()) {
@@ -99,7 +105,8 @@ class HomePage : Screen {
                         painter = painterResource(Res.drawable.share),
                         contentDescription = null,
                         contentScale = ContentScale.FillBounds,
-                        modifier = Modifier.height(40.dp).width(40.dp))
+                        modifier = Modifier.height(40.dp).width(40.dp)
+                    )
                 }
                 Box(
                     contentAlignment = Alignment.Center,
@@ -121,7 +128,8 @@ class HomePage : Screen {
                         painter = painterResource(Res.drawable.mail),
                         contentDescription = null,
                         contentScale = ContentScale.FillBounds,
-                        modifier = Modifier.height(40.dp).width(40.dp))
+                        modifier = Modifier.height(40.dp).width(40.dp)
+                    )
                 }
             }
         }
@@ -130,11 +138,11 @@ class HomePage : Screen {
 
 
 @Composable
-fun button(text: String ) {
+fun button(text: String) {
     Text(text = text, fontSize = 40.sp, color = Color.White)
 }
 
 @Composable
 fun button1(text: String) {
-    Text(text = text, fontSize = 20.sp , color = Color.White)
+    Text(text = text, fontSize = 20.sp, color = Color.White)
 }

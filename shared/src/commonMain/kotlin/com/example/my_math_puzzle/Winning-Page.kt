@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,6 +31,8 @@ import com.example.my_shayari_app.winninglogo
 import com.example.my_shayari_app.yellowbutton
 import org.jetbrains.compose.resources.painterResource
 
+val star3 = mutableStateOf("")
+var tt : Int = 0
 
 class win : Screen {
     @Composable
@@ -76,6 +79,7 @@ class win : Screen {
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(60.dp).width(180.dp).clickable{
                         navigator3!!.push(BordPage())
+                        tt++
                     }
                 )
                 winbutton("CONTINUE")
@@ -111,9 +115,7 @@ class win : Screen {
                     modifier = Modifier.height(50.dp).width(50.dp)
                 )
             }
-
         }
-
     }
 }
 
