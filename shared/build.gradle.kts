@@ -65,6 +65,7 @@ android {
 }
 dependencies {
     implementation(libs.firebase.database.ktx)
+    implementation(libs.cronet.embedded)
 }
 
 // for resources

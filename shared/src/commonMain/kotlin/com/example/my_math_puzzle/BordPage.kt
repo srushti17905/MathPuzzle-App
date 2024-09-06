@@ -17,6 +17,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -108,96 +109,94 @@ import com.example.my_shayari_app.leval75
 import com.example.my_shayari_app.leval8
 import com.example.my_shayari_app.leval9
 import com.example.my_shayari_app.plainyellowbutton
-import com.example.my_shayari_app.whiteline
-import com.example.my_shayari_app.whitepage
+import com.example.my_shayari_app.squearline
 import org.jetbrains.compose.resources.painterResource
 
-val star2 = mutableStateOf("")
-var cc : Int = 0
+var i = 0
+var ans = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
 
+val ar = arrayOf(
+    Res.drawable.leval1,
+    Res.drawable.leval2,
+    Res.drawable.leval3,
+    Res.drawable.leval4,
+    Res.drawable.leval5,
+    Res.drawable.leval6,
+    Res.drawable.leval7,
+    Res.drawable.leval7,
+    Res.drawable.leval8,
+    Res.drawable.leval9,
+    Res.drawable.leval10,
+    Res.drawable.leval11,
+    Res.drawable.leval12,
+    Res.drawable.leval13,
+    Res.drawable.leval14,
+    Res.drawable.leval15,
+    Res.drawable.leval16,
+    Res.drawable.leval17,
+    Res.drawable.leval18,
+    Res.drawable.leval19,
+    Res.drawable.leval20,
+    Res.drawable.leval21,
+    Res.drawable.leval22,
+    Res.drawable.leval23,
+    Res.drawable.leval24,
+    Res.drawable.leval25,
+    Res.drawable.leval27,
+    Res.drawable.leval28,
+    Res.drawable.leval29,
+    Res.drawable.leval30,
+    Res.drawable.leval31,
+    Res.drawable.leval32,
+    Res.drawable.leval33,
+    Res.drawable.leval34,
+    Res.drawable.leval35,
+    Res.drawable.leval36,
+    Res.drawable.leval37,
+    Res.drawable.leval38,
+    Res.drawable.leval39,
+    Res.drawable.leval40,
+    Res.drawable.leval41,
+    Res.drawable.leval42,
+    Res.drawable.leval43,
+    Res.drawable.leval44,
+    Res.drawable.leval45,
+    Res.drawable.leval46,
+    Res.drawable.leval47,
+    Res.drawable.leval48,
+    Res.drawable.leval49,
+    Res.drawable.leval50,
+    Res.drawable.leval51,
+    Res.drawable.leval52,
+    Res.drawable.leval53,
+    Res.drawable.leval54,
+    Res.drawable.leval55,
+    Res.drawable.leval56,
+    Res.drawable.leval57,
+    Res.drawable.leval58,
+    Res.drawable.leval59,
+    Res.drawable.leval60,
+    Res.drawable.leval61,
+    Res.drawable.leval62,
+    Res.drawable.leval63,
+    Res.drawable.leval64,
+    Res.drawable.leval65,
+    Res.drawable.leval66,
+    Res.drawable.leval67,
+    Res.drawable.leval68,
+    Res.drawable.leval69,
+    Res.drawable.leval70,
+    Res.drawable.leval71,
+    Res.drawable.leval72,
+    Res.drawable.leval73,
+    Res.drawable.leval74,
+    Res.drawable.leval75
+)
 
 class BordPage : Screen {
     @Composable
     override fun Content() {
-
         val navigator2 = LocalNavigator.current
-        var ar = arrayOf(
-            Res.drawable.leval1,
-            Res.drawable.leval2,
-            Res.drawable.leval3,
-            Res.drawable.leval4,
-            Res.drawable.leval5,
-            Res.drawable.leval6,
-            Res.drawable.leval7,
-            Res.drawable.leval7,
-            Res.drawable.leval8,
-            Res.drawable.leval9,
-            Res.drawable.leval10,
-            Res.drawable.leval11,
-            Res.drawable.leval12,
-            Res.drawable.leval13,
-            Res.drawable.leval14,
-            Res.drawable.leval15,
-            Res.drawable.leval16,
-            Res.drawable.leval17,
-            Res.drawable.leval18,
-            Res.drawable.leval19,
-            Res.drawable.leval20,
-            Res.drawable.leval21,
-            Res.drawable.leval22,
-            Res.drawable.leval23,
-            Res.drawable.leval24,
-            Res.drawable.leval25,
-            Res.drawable.leval27,
-            Res.drawable.leval28,
-            Res.drawable.leval29,
-            Res.drawable.leval30,
-            Res.drawable.leval31,
-            Res.drawable.leval32,
-            Res.drawable.leval33,
-            Res.drawable.leval34,
-            Res.drawable.leval35,
-            Res.drawable.leval36,
-            Res.drawable.leval37,
-            Res.drawable.leval38,
-            Res.drawable.leval39,
-            Res.drawable.leval40,
-            Res.drawable.leval41,
-            Res.drawable.leval42,
-            Res.drawable.leval43,
-            Res.drawable.leval44,
-            Res.drawable.leval45,
-            Res.drawable.leval46,
-            Res.drawable.leval47,
-            Res.drawable.leval48,
-            Res.drawable.leval49,
-            Res.drawable.leval50,
-            Res.drawable.leval51,
-            Res.drawable.leval52,
-            Res.drawable.leval53,
-            Res.drawable.leval54,
-            Res.drawable.leval55,
-            Res.drawable.leval56,
-            Res.drawable.leval57,
-            Res.drawable.leval58,
-            Res.drawable.leval59,
-            Res.drawable.leval60,
-            Res.drawable.leval61,
-            Res.drawable.leval62,
-            Res.drawable.leval63,
-            Res.drawable.leval64,
-            Res.drawable.leval65,
-            Res.drawable.leval66,
-            Res.drawable.leval67,
-            Res.drawable.leval68,
-            Res.drawable.leval69,
-            Res.drawable.leval70,
-            Res.drawable.leval71,
-            Res.drawable.leval72,
-            Res.drawable.leval73,
-            Res.drawable.leval74,
-            Res.drawable.leval75
-            )
 
         Surface(modifier = Modifier.fillMaxSize()) {
             Image(
@@ -225,7 +224,7 @@ class BordPage : Screen {
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxSize().weight(1.5f)
                 ) {
-                    squear1("Level 1")
+                    squear1("Level ${state.value}")
                 }
                 Box(
                     contentAlignment = Alignment.Center,
@@ -239,38 +238,62 @@ class BordPage : Screen {
                     )
                 }
             }
-            Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(4f)) {
-
-                    Image(
-                        painter = painterResource(ar[56]),
-                        contentDescription = null,
-                        contentScale = ContentScale.FillBounds,
-                        modifier = Modifier.height(350.dp).width(320.dp)
-                    )
-                cc++
-            }
-            Row(modifier = Modifier.fillMaxSize().weight(.8f))
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier.fillMaxSize().weight(4f)
+            )
             {
+                Image(
+                    painter = painterResource(ar[tt]),
+                    contentDescription = null,
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier.height(350.dp).width(320.dp)
+                )
+            }
+            Row(
+                modifier = Modifier.fillMaxSize().weight(.7f)
+            ) {
+                Box(modifier = Modifier.fillMaxSize().weight(.2f)) { }
+
                 Box(
                     contentAlignment = Alignment.Center,
-                    modifier = Modifier.fillMaxSize().weight(.8f)
+                    modifier = Modifier.fillMaxSize().weight(1.6f)
                 ) {
-                    Row (modifier = Modifier.fillMaxSize()){  }
                     Image(
-                        painter = painterResource(Res.drawable.whiteline),
+                        painter = painterResource(Res.drawable.squearline),
                         contentDescription = null,
                         contentScale = ContentScale.FillBounds,
-                        modifier = Modifier.height(50.dp).width(310.dp)
+                        modifier = Modifier.height(54.dp).width(312.dp)
                     )
-                    Text(text = s, fontSize = 30.sp, color = Color.Black)
+                    Text(
+                        text = sky.value,
+                        fontSize = 30.sp,
+                        color = Color.Black,
+                        textAlign = TextAlign.Center
+                    )
                 }
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier.fillMaxSize().weight(.4f)
+                ) {
+                    Image(painter = painterResource(Res.drawable.backspacebutton),
+                        contentDescription = null,
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier.height(50.dp).width(57.dp).clickable {
+                            try {
+                                sky.value = sky.value.substring(0, sky.value.length - 1)
+                            } catch (e: Exception) {
+                                println(e.message)
+                            }
+                        }
+                    )
+                }
+                Row(modifier = Modifier.fillMaxSize().weight(.2f)) { }
             }
-            Row(modifier = Modifier.fillMaxSize().weight(.7f))
-            {
+            Row(modifier = Modifier.fillMaxSize().weight(.7f)) {
                 Row(modifier = Modifier.fillMaxSize().weight(.1f)) { }
 
-                Row(modifier = Modifier.fillMaxSize().weight(1f))
-                {
+                Row(modifier = Modifier.fillMaxSize().weight(1f)) {
                     image(this, "1")
                     image(this, "2")
                     image(this, "3")
@@ -283,8 +306,7 @@ class BordPage : Screen {
 
                 Row(modifier = Modifier.fillMaxSize().weight(.1f)) { }
 
-                Row(modifier = Modifier.fillMaxSize().weight(1f))
-                {
+                Row(modifier = Modifier.fillMaxSize().weight(1f)) {
                     image(this, "6")
                     image(this, "7")
                     image(this, "8")
@@ -293,12 +315,14 @@ class BordPage : Screen {
                 }
                 Row(modifier = Modifier.fillMaxSize().weight(.1f)) { }
             }
-            Box(
-                contentAlignment = Alignment.Center,
+            Box(contentAlignment = Alignment.Center,
                 modifier = Modifier.fillMaxSize().weight(1.1f).clickable {
-                    navigator2!!.push(win())
-                }
-            ) {
+
+                    if (ans[i].toString() == sky.value) {
+                        navigator2!!.push(win())
+                        sky.value = ""
+                    }
+                }) {
                 squear2("SUBMIT")
             }
         }
@@ -340,10 +364,8 @@ val s by sky
 @Composable
 fun image(rowScope: RowScope, text: String) {
     rowScope.apply {
-        Box(contentAlignment = Alignment.Center, modifier = Modifier.weight(1f))
-        {
-            Image(
-                painter = painterResource(Res.drawable.plainyellowbutton),
+        Box(contentAlignment = Alignment.Center, modifier = Modifier.weight(1f)) {
+            Image(painter = painterResource(Res.drawable.plainyellowbutton),
                 contentDescription = null,
                 contentScale = ContentScale.FillBounds,
                 modifier = Modifier.height(60.dp).width(60.dp).padding(4.dp).clickable {
@@ -370,8 +392,7 @@ fun image(rowScope: RowScope, text: String) {
                     } else {
                         sky.value += text
                     }
-                }
-            )
+                })
             Text(text = text, fontSize = 35.sp, color = Color.Black)
         }
     }

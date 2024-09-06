@@ -16,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
@@ -31,7 +30,7 @@ import com.example.my_shayari_app.winninglogo
 import com.example.my_shayari_app.yellowbutton
 import org.jetbrains.compose.resources.painterResource
 
-val star3 = mutableStateOf("")
+var state = mutableStateOf(1)
 var tt : Int = 0
 
 class win : Screen {
@@ -39,7 +38,6 @@ class win : Screen {
     override fun Content() {
 
         val navigator3 = LocalNavigator.current
-
         Surface(modifier = Modifier.fillMaxSize())
         {
             Image(
@@ -79,7 +77,9 @@ class win : Screen {
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(60.dp).width(180.dp).clickable{
                         navigator3!!.push(BordPage())
-                        tt++
+                        state.value += 1
+                        ar[tt++]
+                        ans[i++]
                     }
                 )
                 winbutton("CONTINUE")
@@ -92,9 +92,13 @@ class win : Screen {
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(60.dp).width(180.dp).clickable{
                         navigator3!!.push(HomePage())
+                        state.value += 1
+                        ar[tt++]
+                        ans[i++]
                     }
                 )
                 winbutton("MAIN MENU")
+
             }
             Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(1f))
             {

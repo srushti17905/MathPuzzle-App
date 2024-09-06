@@ -15,6 +15,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.levelbackground
+import com.example.my_shayari_app.levelbluebutton
+import com.example.my_shayari_app.levelselectbutton
 import com.example.my_shayari_app.selectbutton
 import org.jetbrains.compose.resources.painterResource
 
@@ -29,4 +31,17 @@ fun level() {
         )
     }
 
+    Column(modifier = Modifier.fillMaxSize()) {
+
+        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(1f)) {
+
+            Image(
+                painter = painterResource(Res.drawable.levelselectbutton),
+                contentDescription = null,
+                contentScale = ContentScale.FillBounds,
+                modifier = Modifier.height(65.dp).width(220.dp)
+            )
+        }
+
+}
 }

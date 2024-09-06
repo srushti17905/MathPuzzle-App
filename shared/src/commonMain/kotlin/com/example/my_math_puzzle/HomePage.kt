@@ -8,11 +8,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,26 +19,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.Navigator
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.background
 import com.example.my_shayari_app.bluebutton
-import com.example.my_shayari_app.leval1
 import com.example.my_shayari_app.mail
 import com.example.my_shayari_app.purple
 import com.example.my_shayari_app.redbutton
 import com.example.my_shayari_app.share
 import com.example.my_shayari_app.yellowbutton
-//import com.android.myapplication.Res
 import org.jetbrains.compose.resources.painterResource
-
-val star1 = mutableStateOf("")
 
 class HomePage : Screen {
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.current
-
 
         Surface(modifier = Modifier.fillMaxSize()) {
             Image(
@@ -146,3 +138,4 @@ fun button(text: String) {
 fun button1(text: String) {
     Text(text = text, fontSize = 20.sp, color = Color.White)
 }
+

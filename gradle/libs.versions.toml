@@ -8,6 +8,7 @@ androidx-activityCompose = "1.8.0"
 common = "1.6.11"
 voyagerVirsion = "1.0.0"
 firebaseDatabaseKtx = "21.0.0"
+cronetEmbedded = "119.6045.31"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -21,6 +22,7 @@ navigator = { module ="cafe.adriel.voyager:voyager-navigator", version.ref = "vo
 navigator-tabs = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyagerVirsion" }
 navigator-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyagerVirsion"}
 firebase-database-ktx = { group = "com.google.firebase", name = "firebase-database-ktx", version.ref = "firebaseDatabaseKtx" }
+cronet-embedded = { group = "org.chromium.net", name = "cronet-embedded", version.ref = "cronetEmbedded" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
