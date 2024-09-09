@@ -2,6 +2,7 @@ package com.example.my_math_puzzle
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,7 +32,8 @@ import com.example.my_shayari_app.yellowbutton
 import org.jetbrains.compose.resources.painterResource
 
 var state = mutableStateOf(1)
-var tt : Int = 0
+var tt: Int = 0
+var winnumber = 0
 
 class win : Screen {
     @Composable
@@ -49,8 +51,14 @@ class win : Screen {
 
         Column(modifier = Modifier.fillMaxSize())
         {
-            Row(modifier = Modifier.fillMaxSize().weight(.7f)) { }
-
+            Row(
+                modifier = Modifier.fillMaxSize().weight(.7f),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment =
+                Alignment.Bottom
+            ) {
+                Text(text = "${winnumber}", fontSize = 60.sp, color = Color.White)
+            }
             Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(.8f))
             {
                 Image(
@@ -75,10 +83,10 @@ class win : Screen {
                     painter = painterResource(Res.drawable.yellowbutton),
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
-                    modifier = Modifier.height(60.dp).width(180.dp).clickable{
+                    modifier = Modifier.height(60.dp).width(180.dp).clickable {
                         navigator3!!.push(BordPage())
                         state.value += 1
-                        ar[tt++]
+                        image[tt++]
                         ans[i++]
                     }
                 )
@@ -90,10 +98,10 @@ class win : Screen {
                     painter = painterResource(Res.drawable.bluebutton),
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
-                    modifier = Modifier.height(60.dp).width(180.dp).clickable{
+                    modifier = Modifier.height(60.dp).width(180.dp).clickable {
                         navigator3!!.push(HomePage())
                         state.value += 1
-                        ar[tt++]
+                        image[tt++]
                         ans[i++]
                     }
                 )
@@ -124,7 +132,6 @@ class win : Screen {
 }
 
 @Composable
-fun winbutton(text : String)
-{
-    Text(text = text, fontSize = 33.sp , color = Color.White)
+fun winbutton(text: String) {
+    Text(text = text, fontSize = 33.sp, color = Color.White)
 }

@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.windowInsetsEndWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -113,9 +112,9 @@ import com.example.my_shayari_app.squearline
 import org.jetbrains.compose.resources.painterResource
 
 var i = 0
-var ans = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+var ans = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40.41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75)
 
-val ar = arrayOf(
+val image = arrayOf(
     Res.drawable.leval1,
     Res.drawable.leval2,
     Res.drawable.leval3,
@@ -244,7 +243,7 @@ class BordPage : Screen {
             )
             {
                 Image(
-                    painter = painterResource(ar[tt]),
+                    painter = painterResource(image[tt]),
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(350.dp).width(320.dp)
@@ -282,7 +281,7 @@ class BordPage : Screen {
                         modifier = Modifier.height(50.dp).width(57.dp).clickable {
                             try {
                                 sky.value = sky.value.substring(0, sky.value.length - 1)
-                            } catch (e: Exception) {
+                            } catch (e : Exception) {
                                 println(e.message)
                             }
                         }
@@ -316,14 +315,26 @@ class BordPage : Screen {
                 Row(modifier = Modifier.fillMaxSize().weight(.1f)) { }
             }
             Box(contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize().weight(1.1f).clickable {
-
-                    if (ans[i].toString() == sky.value) {
-                        navigator2!!.push(win())
-                        sky.value = ""
+                modifier = Modifier.fillMaxSize().weight(1.1f)
+            ) {
+                Surface(
+                    modifier = Modifier.height(60.dp).width(180.dp),
+                    color = Color.Black,
+                    border = BorderStroke(3.dp, color = moon.skyblue),
+                    shape = RoundedCornerShape(20.dp)
+                ) {
+                    Box(contentAlignment = Alignment.Center, modifier = Modifier.clickable {
+                        if (ans[i].toString() == sky.value)
+                        {
+                            navigator2!!.push(win())
+                            sky.value = ""
+                            winnumber += 1
+                        }
+                    }) {
+                        Text(text = "SUBMIT", fontSize = 35.sp, color = Color.White)
                     }
-                }) {
-                squear2("SUBMIT")
+                }
+
             }
         }
     }
@@ -343,20 +354,6 @@ fun squear1(text: String) {
     }
 }
 
-
-@Composable
-fun squear2(text: String) {
-    Surface(
-        modifier = Modifier.height(60.dp).width(180.dp),
-        color = Color.Black,
-        border = BorderStroke(3.dp, color = moon.skyblue),
-        shape = RoundedCornerShape(20.dp)
-    ) {
-        Box(contentAlignment = Alignment.Center) {
-            Text(text = text, fontSize = 35.sp, color = Color.White)
-        }
-    }
-}
 
 val sky = mutableStateOf("")
 val s by sky

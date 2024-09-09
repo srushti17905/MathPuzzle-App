@@ -69,7 +69,9 @@ class HomePage : Screen {
                     painter = painterResource(Res.drawable.bluebutton),
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
-                    modifier = Modifier.height(60.dp).width(170.dp)
+                    modifier = Modifier.height(60.dp).width(170.dp).clickable {
+                        navigator!!.push(LevelPage())
+                    }
                 )
                 button("LEVEL")
             }
