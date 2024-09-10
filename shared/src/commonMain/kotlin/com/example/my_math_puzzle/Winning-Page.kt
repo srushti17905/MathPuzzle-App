@@ -35,7 +35,7 @@ var state = mutableStateOf(1)
 var tt: Int = 0
 var winnumber = 0
 
-class win : Screen {
+class win() : Screen {
     @Composable
     override fun Content() {
 
@@ -84,7 +84,7 @@ class win : Screen {
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(60.dp).width(180.dp).clickable {
-                        navigator3!!.push(BordPage())
+                        navigator3!!.push(BordPage(image[0]))
                         state.value += 1
                         image[tt++]
                         ans[i++]

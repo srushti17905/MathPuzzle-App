@@ -16,7 +16,6 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,7 +28,6 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.background2
-import com.example.my_shayari_app.backspace
 import com.example.my_shayari_app.backspacebutton
 import com.example.my_shayari_app.button1
 import com.example.my_shayari_app.button2
@@ -109,6 +107,7 @@ import com.example.my_shayari_app.leval8
 import com.example.my_shayari_app.leval9
 import com.example.my_shayari_app.plainyellowbutton
 import com.example.my_shayari_app.squearline
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
 var i = 0
@@ -121,7 +120,6 @@ val image = arrayOf(
     Res.drawable.leval4,
     Res.drawable.leval5,
     Res.drawable.leval6,
-    Res.drawable.leval7,
     Res.drawable.leval7,
     Res.drawable.leval8,
     Res.drawable.leval9,
@@ -192,7 +190,7 @@ val image = arrayOf(
     Res.drawable.leval75
 )
 
-class BordPage : Screen {
+class BordPage(drawableResource: DrawableResource) : Screen {
     @Composable
     override fun Content() {
         val navigator2 = LocalNavigator.current
@@ -329,12 +327,13 @@ class BordPage : Screen {
                             navigator2!!.push(win())
                             sky.value = ""
                             winnumber += 1
+                            level +=  1
+                            add += 1
                         }
                     }) {
                         Text(text = "SUBMIT", fontSize = 35.sp, color = Color.White)
                     }
                 }
-
             }
         }
     }

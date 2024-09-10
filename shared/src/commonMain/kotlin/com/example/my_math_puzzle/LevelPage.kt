@@ -1,6 +1,7 @@
 package com.example.my_math_puzzle
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,15 +21,21 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.levelbackground
 import com.example.my_shayari_app.levelbluebutton
 import com.example.my_shayari_app.levelselectbutton
 import org.jetbrains.compose.resources.painterResource
 
+var level = 1
+var add = 1
+var it = 1
 class LevelPage : Screen {
     @Composable
     override fun Content() {
+
+        var navigator = LocalNavigator.current
 
         Surface(modifier = Modifier.fillMaxSize()) {
             Image(
@@ -60,13 +67,19 @@ class LevelPage : Screen {
                                 painter = painterResource(Res.drawable.levelbluebutton),
                                 contentDescription = null,
                                 contentScale = ContentScale.FillBounds,
-                                modifier = Modifier.height(60.dp).width(60.dp)
+                                modifier = Modifier.height(60.dp).width(60.dp).clickable {
+                                    if (level == 1)
+                                    {
+                                        navigator!!.push(BordPage(image[add]))
+                                    }
+                                }
                             )
                             Text(text = "${it + 1}" , fontSize = 30.sp , color = Color.White)
                         }
                     }
-                })
-            }
+                }
+                )
+           }
 
         }
     }

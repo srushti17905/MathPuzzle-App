@@ -56,7 +56,7 @@ class HomePage : Screen {
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(60.dp).width(170.dp).clickable
                     {
-                        navigator!!.push(BordPage())
+                        navigator!!.push(BordPage(image[0]))
                     }
                 )
                 button("PLAY")
