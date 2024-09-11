@@ -11,7 +11,10 @@ var context : Any? = null
 @Composable
 fun transition(getcontext: Any? = null)
 {
+
+    context = getcontext
     Navigator(HomePage()){ navigator ->
+
 
         SlideTransition(navigator = navigator , animationSpec = tween(1000))
 //        FadeTransition(navigator = navigator , animationSpec = tween(3000))

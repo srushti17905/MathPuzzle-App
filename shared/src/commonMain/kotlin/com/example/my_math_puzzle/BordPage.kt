@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
+import com.example.my_math_puzzle.LocalStorage.putInt
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.background2
 import com.example.my_shayari_app.backspacebutton
@@ -107,10 +108,8 @@ import com.example.my_shayari_app.leval8
 import com.example.my_shayari_app.leval9
 import com.example.my_shayari_app.plainyellowbutton
 import com.example.my_shayari_app.squearline
-import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
-var i = 0
 var ans = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40.41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75)
 
 val image = arrayOf(
@@ -190,9 +189,10 @@ val image = arrayOf(
     Res.drawable.leval75
 )
 
-class BordPage(drawableResource: DrawableResource) : Screen {
+class BordPage(var level : Int) : Screen {
     @Composable
     override fun Content() {
+
         val navigator2 = LocalNavigator.current
 
         Surface(modifier = Modifier.fillMaxSize()) {
@@ -221,7 +221,7 @@ class BordPage(drawableResource: DrawableResource) : Screen {
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxSize().weight(1.5f)
                 ) {
-                    squear1("Level ${state.value}")
+                    squear1("Level ${level+1}")
                 }
                 Box(
                     contentAlignment = Alignment.Center,
@@ -241,7 +241,7 @@ class BordPage(drawableResource: DrawableResource) : Screen {
             )
             {
                 Image(
-                    painter = painterResource(image[tt]),
+                    painter = painterResource(image[level]),
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(350.dp).width(320.dp)
@@ -322,13 +322,11 @@ class BordPage(drawableResource: DrawableResource) : Screen {
                     shape = RoundedCornerShape(20.dp)
                 ) {
                     Box(contentAlignment = Alignment.Center, modifier = Modifier.clickable {
-                        if (ans[i].toString() == sky.value)
+                        if (ans[level].toString() == sky.value)
                         {
-                            navigator2!!.push(win())
                             sky.value = ""
-                            winnumber += 1
-                            level +=  1
-                            add += 1
+                            HomePage.kp.putInt("level",level+1)
+                            navigator2!!.push(win(level+1))
                         }
                     }) {
                         Text(text = "SUBMIT", fontSize = 35.sp, color = Color.White)

@@ -19,6 +19,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
+import com.example.my_math_puzzle.LocalStorage.KotlinPrefrence
+import com.example.my_math_puzzle.LocalStorage.getInt
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.background
 import com.example.my_shayari_app.bluebutton
@@ -29,9 +31,14 @@ import com.example.my_shayari_app.share
 import com.example.my_shayari_app.yellowbutton
 import org.jetbrains.compose.resources.painterResource
 
-class HomePage : Screen {
+class HomePage() : Screen {
+    companion object{
+        var kp = KotlinPrefrence(getcontext = context)
+    }
     @Composable
     override fun Content() {
+        val level : Int = kp.getInt("level",0)
+
         val navigator = LocalNavigator.current
 
         Surface(modifier = Modifier.fillMaxSize()) {
@@ -56,7 +63,7 @@ class HomePage : Screen {
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(60.dp).width(170.dp).clickable
                     {
-                        navigator!!.push(BordPage(image[0]))
+                        navigator!!.push(BordPage(level))
                     }
                 )
                 button("PLAY")

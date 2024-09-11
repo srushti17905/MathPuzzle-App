@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,9 +29,7 @@ import com.example.my_shayari_app.levelbluebutton
 import com.example.my_shayari_app.levelselectbutton
 import org.jetbrains.compose.resources.painterResource
 
-var level = 1
-var add = 1
-var it = 1
+
 class LevelPage : Screen {
     @Composable
     override fun Content() {
@@ -61,25 +60,27 @@ class LevelPage : Screen {
 
             Row(modifier = Modifier.fillMaxSize().weight(1f)) {
                 LazyVerticalGrid(columns = GridCells.Fixed(4), content = {
-                    items(75) { it ->
-                        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(1f).padding(top = 20.dp)) {
+                    items(75) {
+                        Box(
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier.fillMaxSize().weight(1f).padding(top = 20.dp)
+                        ) {
                             Image(
                                 painter = painterResource(Res.drawable.levelbluebutton),
                                 contentDescription = null,
                                 contentScale = ContentScale.FillBounds,
                                 modifier = Modifier.height(60.dp).width(60.dp).clickable {
-                                    if (level == 1)
-                                    {
-                                        navigator!!.push(BordPage(image[add]))
-                                    }
+
+                                    navigator!!.replace(BordPage(it))
+
                                 }
                             )
-                            Text(text = "${it + 1}" , fontSize = 30.sp , color = Color.White)
+                            Text(text = "${it + 1}", fontSize = 30.sp, color = Color.White)
                         }
                     }
                 }
                 )
-           }
+            }
 
         }
     }

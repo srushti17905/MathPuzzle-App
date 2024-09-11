@@ -31,11 +31,8 @@ import com.example.my_shayari_app.winninglogo
 import com.example.my_shayari_app.yellowbutton
 import org.jetbrains.compose.resources.painterResource
 
-var state = mutableStateOf(1)
-var tt: Int = 0
-var winnumber = 0
 
-class win() : Screen {
+class win(var level : Int ) : Screen {
     @Composable
     override fun Content() {
 
@@ -57,7 +54,7 @@ class win() : Screen {
                 verticalAlignment =
                 Alignment.Bottom
             ) {
-                Text(text = "${winnumber}", fontSize = 60.sp, color = Color.White)
+                Text(text = "${level}", fontSize = 60.sp, color = Color.White)
             }
             Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(.8f))
             {
@@ -84,10 +81,8 @@ class win() : Screen {
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(60.dp).width(180.dp).clickable {
-                        navigator3!!.push(BordPage(image[0]))
-                        state.value += 1
-                        image[tt++]
-                        ans[i++]
+                        navigator3!!.push(BordPage(level))
+
                     }
                 )
                 winbutton("CONTINUE")
@@ -100,9 +95,7 @@ class win() : Screen {
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(60.dp).width(180.dp).clickable {
                         navigator3!!.push(HomePage())
-                        state.value += 1
-                        image[tt++]
-                        ans[i++]
+
                     }
                 )
                 winbutton("MAIN MENU")
