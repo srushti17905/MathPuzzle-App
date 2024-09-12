@@ -351,10 +351,7 @@ fun squear1(text: String) {
     }
 }
 
-
-val sky = mutableStateOf("")
-val s by sky
-
+var sky = mutableStateOf("")
 @Composable
 fun image(rowScope: RowScope, text: String) {
     rowScope.apply {

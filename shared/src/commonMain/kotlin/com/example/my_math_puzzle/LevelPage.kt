@@ -26,11 +26,14 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.levelbackground
 import com.example.my_shayari_app.levelbluebutton
+import com.example.my_shayari_app.levellock
 import com.example.my_shayari_app.levelselectbutton
+import com.example.my_shayari_app.right
 import org.jetbrains.compose.resources.painterResource
 
+var add = 1
 
-class LevelPage : Screen {
+class LevelPage(var level: Int) : Screen {
     @Composable
     override fun Content() {
 
@@ -65,19 +68,38 @@ class LevelPage : Screen {
                             contentAlignment = Alignment.Center,
                             modifier = Modifier.fillMaxSize().weight(1f).padding(top = 20.dp)
                         ) {
+
+
                             Image(
                                 painter = painterResource(Res.drawable.levelbluebutton),
                                 contentDescription = null,
                                 contentScale = ContentScale.FillBounds,
                                 modifier = Modifier.height(60.dp).width(60.dp).clickable {
-
                                     navigator!!.replace(BordPage(it))
-
                                 }
                             )
                             Text(text = "${it + 1}", fontSize = 30.sp, color = Color.White)
+
+//                            if () {
+                                Image(
+                                    painter = painterResource(Res.drawable.right),
+                                    contentDescription = null,
+                                    contentScale = ContentScale.FillBounds,
+                                    modifier = Modifier.height(40.dp).width(40.dp)
+                                )
+
+//                            } else {
+
+                                Image(
+                                    painter = painterResource(Res.drawable.levellock),
+                                    contentDescription = null,
+                                    contentScale = ContentScale.FillBounds,
+                                    modifier = Modifier.height(40.dp).width(40.dp)
+                                )
+                            }
                         }
-                    }
+
+//                    }
                 }
                 )
             }
