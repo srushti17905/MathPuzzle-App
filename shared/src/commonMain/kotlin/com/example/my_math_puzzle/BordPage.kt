@@ -202,10 +202,10 @@ class BordPage(var level : Int) : Screen {
                 contentScale = ContentScale.FillBounds
             )
         }
-        Column(modifier = Modifier.fillMaxSize()) {
-
-            Row(modifier = Modifier.fillMaxSize().weight(.8f)) {
-
+        Column(modifier = Modifier.fillMaxSize())
+        {
+            Row(modifier = Modifier.fillMaxSize().weight(.8f))
+            {
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxSize().weight(.5f)

@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -30,8 +32,7 @@ import com.example.my_shayari_app.levellock
 import com.example.my_shayari_app.levelselectbutton
 import com.example.my_shayari_app.right
 import org.jetbrains.compose.resources.painterResource
-
-var add = 1
+import kotlin.math.log
 
 class LevelPage(var level: Int) : Screen {
     @Composable
@@ -68,42 +69,40 @@ class LevelPage(var level: Int) : Screen {
                             contentAlignment = Alignment.Center,
                             modifier = Modifier.fillMaxSize().weight(1f).padding(top = 20.dp)
                         ) {
-
-
                             Image(
                                 painter = painterResource(Res.drawable.levelbluebutton),
                                 contentDescription = null,
                                 contentScale = ContentScale.FillBounds,
                                 modifier = Modifier.height(60.dp).width(60.dp).clickable {
-                                    navigator!!.replace(BordPage(it))
+                                    if (ans[it] == level) {
+                                        navigator!!.replace(BordPage(it))
+                                    }
                                 }
                             )
+
                             Text(text = "${it + 1}", fontSize = 30.sp, color = Color.White)
 
-//                            if () {
+                            if (ans[it] == level) {
                                 Image(
                                     painter = painterResource(Res.drawable.right),
                                     contentDescription = null,
                                     contentScale = ContentScale.FillBounds,
                                     modifier = Modifier.height(40.dp).width(40.dp)
                                 )
-
-//                            } else {
-
+                            } else {
                                 Image(
                                     painter = painterResource(Res.drawable.levellock),
                                     contentDescription = null,
                                     contentScale = ContentScale.FillBounds,
-                                    modifier = Modifier.height(40.dp).width(40.dp)
+                                    modifier = Modifier.height(40.dp).width(40.dp).clickable (enabled = false){  }
                                 )
                             }
                         }
-
-//                    }
+                    }
                 }
                 )
             }
-
         }
     }
 }
+
