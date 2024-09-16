@@ -38,7 +38,7 @@ class LevelPage(var level: Int) : Screen {
     @Composable
     override fun Content() {
 
-        var navigator = LocalNavigator.current
+        val navigator = LocalNavigator.current
 
         Surface(modifier = Modifier.fillMaxSize()) {
             Image(
@@ -63,7 +63,7 @@ class LevelPage(var level: Int) : Screen {
             }
 
             Row(modifier = Modifier.fillMaxSize().weight(1f)) {
-                LazyVerticalGrid(columns = GridCells.Fixed(4), content = {
+                LazyVerticalGrid(columns = GridCells.Fixed(4)) {
                     items(75) {
                         Box(
                             contentAlignment = Alignment.Center,
@@ -88,19 +88,43 @@ class LevelPage(var level: Int) : Screen {
                                     contentDescription = null,
                                     contentScale = ContentScale.FillBounds,
                                     modifier = Modifier.height(40.dp).width(40.dp)
-                                )
-                            } else {
-                                Image(
-                                    painter = painterResource(Res.drawable.levellock),
-                                    contentDescription = null,
-                                    contentScale = ContentScale.FillBounds,
-                                    modifier = Modifier.height(40.dp).width(40.dp).clickable (enabled = false){  }
+                                        .clickable(enabled = true) { }
                                 )
                             }
+                            else {
+                                Image(painter = painterResource(Res.drawable.levellock),
+                                    contentDescription = null,
+                                    contentScale = ContentScale.FillBounds,
+                                    modifier = Modifier.height(40.dp).width(40.dp).clickable(
+                                        enabled = false
+                                    ) { }
+                                )
+                            }
+
+
+                            // try
+
+//                            if (image[level].toString() == sky.value) {
+//                                Image(
+//                                    painter = painterResource(Res.drawable.right),
+//                                    contentDescription = null,
+//                                    contentScale = ContentScale.FillBounds,
+//                                    modifier = Modifier.height(40.dp).width(40.dp)
+//                                )
+//                            } else {
+//                                Image(painter = painterResource(Res.drawable.levellock),
+//                                    contentDescription = null,
+//                                    contentScale = ContentScale.FillBounds,
+//                                    modifier = Modifier.height(40.dp).width(40.dp).clickable(
+//                                        enabled = false
+//                                    ) { }
+//                                )
+//                            }
+
+
                         }
                     }
                 }
-                )
             }
         }
     }
