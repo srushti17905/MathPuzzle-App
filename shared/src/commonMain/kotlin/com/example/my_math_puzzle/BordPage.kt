@@ -27,7 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
+import com.example.my_math_puzzle.LocalStorage.getString
 import com.example.my_math_puzzle.LocalStorage.putInt
+import com.example.my_math_puzzle.LocalStorage.putString
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.background2
 import com.example.my_shayari_app.backspacebutton
@@ -111,10 +113,82 @@ import com.example.my_shayari_app.plainyellowbutton
 import com.example.my_shayari_app.squearline
 import org.jetbrains.compose.resources.painterResource
 
-var ans = mutableListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40.41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75)
-
-//var list = mutableListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75)
-
+var ans = mutableListOf(
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40, 41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75
+)
 val image = arrayOf(
     Res.drawable.leval1,
     Res.drawable.leval2,
@@ -192,7 +266,7 @@ val image = arrayOf(
     Res.drawable.leval75
 )
 
-class BordPage(var level : Int) : Screen {
+class BordPage(var level: Int) : Screen {
     @Composable
     override fun Content() {
 
@@ -205,10 +279,8 @@ class BordPage(var level : Int) : Screen {
                 contentScale = ContentScale.FillBounds
             )
         }
-        Column(modifier = Modifier.fillMaxSize())
-        {
-            Row(modifier = Modifier.fillMaxSize().weight(.8f))
-            {
+        Column(modifier = Modifier.fillMaxSize()) {
+            Row(modifier = Modifier.fillMaxSize().weight(.8f)) {
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxSize().weight(.5f)
@@ -224,7 +296,7 @@ class BordPage(var level : Int) : Screen {
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxSize().weight(1.5f)
                 ) {
-                    squear1("Level ${level+1}")
+                    squear1("Level ${level + 1}")
                 }
                 Box(
                     contentAlignment = Alignment.Center,
@@ -234,15 +306,18 @@ class BordPage(var level : Int) : Screen {
                         painter = painterResource(Res.drawable.button2),
                         contentDescription = null,
                         contentScale = ContentScale.FillBounds,
-                        modifier = Modifier.height(50.dp).width(50.dp)
+                        modifier = Modifier.height(50.dp).width(50.dp).clickable {
+                            level += 1
+                            sky.value = ""
+
+                            HomePage.kp.putString("levelStatus${level - 1}" , skip)
+                        }
                     )
                 }
             }
             Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize().weight(4f)
-            )
-            {
+                contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(4f)
+            ) {
                 Image(
                     painter = painterResource(image[level]),
                     contentDescription = null,
@@ -282,11 +357,10 @@ class BordPage(var level : Int) : Screen {
                         modifier = Modifier.height(50.dp).width(57.dp).clickable {
                             try {
                                 sky.value = sky.value.substring(0, sky.value.length - 1)
-                            } catch (e : Exception) {
+                            } catch (e: Exception) {
                                 println(e.message)
                             }
-                        }
-                    )
+                        })
                 }
                 Row(modifier = Modifier.fillMaxSize().weight(.2f)) { }
             }
@@ -315,8 +389,8 @@ class BordPage(var level : Int) : Screen {
                 }
                 Row(modifier = Modifier.fillMaxSize().weight(.1f)) { }
             }
-            Box(contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize().weight(1.1f)
+            Box(
+                contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(1.1f)
             ) {
                 Surface(
                     modifier = Modifier.height(60.dp).width(180.dp),
@@ -325,11 +399,11 @@ class BordPage(var level : Int) : Screen {
                     shape = RoundedCornerShape(20.dp)
                 ) {
                     Box(contentAlignment = Alignment.Center, modifier = Modifier.clickable {
-                        if (ans[level].toString() == sky.value)
-                        {
+                        if (ans[level].toString() == sky.value) {
                             sky.value = ""
-                            HomePage.kp.putInt("level",level+1)
-                            navigator2!!.push(win(level+1))
+                            HomePage.kp.putInt("level", level + 1)
+                            HomePage.kp.putString("levelStatus${level}", clear)
+                            navigator2!!.push(win(level + 1))
                         }
                     }) {
                         Text(text = "SUBMIT", fontSize = 35.sp, color = Color.White)
@@ -355,6 +429,7 @@ fun squear1(text: String) {
 }
 
 var sky = mutableStateOf("")
+
 @Composable
 fun image(rowScope: RowScope, text: String) {
     rowScope.apply {

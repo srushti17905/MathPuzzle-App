@@ -21,6 +21,9 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import com.example.my_math_puzzle.LocalStorage.KotlinPrefrence
 import com.example.my_math_puzzle.LocalStorage.getInt
+import com.example.my_math_puzzle.LocalStorage.getString
+import com.example.my_math_puzzle.LocalStorage.putInt
+import com.example.my_math_puzzle.LocalStorage.putString
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.background
 import com.example.my_shayari_app.bluebutton
@@ -30,16 +33,28 @@ import com.example.my_shayari_app.redbutton
 import com.example.my_shayari_app.share
 import com.example.my_shayari_app.yellowbutton
 import org.jetbrains.compose.resources.painterResource
+val lock = "lock"
+val skip = "skip"
+val clear = "clear"
+val num = "num"
 
 class HomePage() : Screen {
-    companion object{
+
+    companion object {
         var kp = KotlinPrefrence(getcontext = context)
     }
+
     @Composable
     override fun Content() {
-        val level : Int = kp.getInt("level",0)
+
+        val level: Int = kp.getInt("level", 0)
 
         val navigator = LocalNavigator.current
+        for (i in 0..75) {
+            if (kp.getString("levelStatus$i", "lock") == "lock") {
+                kp.putString("levelStatus$i", "lock")
+            }
+        }
 
         Surface(modifier = Modifier.fillMaxSize()) {
             Image(
@@ -54,37 +69,29 @@ class HomePage() : Screen {
             Row(modifier = Modifier.fillMaxSize().weight(2.8f)) {}
 
             Box(
-                contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()
-                    .weight(.7f)
+                contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(.7f)
             ) {
-                Image(
-                    painter = painterResource(Res.drawable.yellowbutton),
+                Image(painter = painterResource(Res.drawable.yellowbutton),
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
-                    modifier = Modifier.height(60.dp).width(170.dp).clickable
-                    {
+                    modifier = Modifier.height(60.dp).width(170.dp).clickable {
                         navigator!!.push(BordPage(level))
-                    }
-                )
+                    })
                 button("PLAY")
             }
             Box(
-                contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()
-                    .weight(.7f)
+                contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(.7f)
             ) {
-                Image(
-                    painter = painterResource(Res.drawable.bluebutton),
+                Image(painter = painterResource(Res.drawable.bluebutton),
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(60.dp).width(170.dp).clickable {
                         navigator!!.push(LevelPage(level))
-                    }
-                )
+                    })
                 button("LEVEL")
             }
             Box(
-                contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()
-                    .weight(.7f)
+                contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(.7f)
             ) {
                 Image(
                     painter = painterResource(Res.drawable.redbutton),
@@ -96,8 +103,7 @@ class HomePage() : Screen {
             }
             Row(modifier = Modifier.fillMaxSize().weight(1f)) {}
 
-            Row(modifier = Modifier.fillMaxSize().weight(.8f))
-            {
+            Row(modifier = Modifier.fillMaxSize().weight(.8f)) {
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxSize().weight(.4f)

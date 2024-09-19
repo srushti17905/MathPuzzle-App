@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
+import com.example.my_math_puzzle.LocalStorage.getString
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.levelbackground
 import com.example.my_shayari_app.levelbluebutton
@@ -51,8 +52,7 @@ class LevelPage(var level: Int) : Screen {
         Column(modifier = Modifier.fillMaxSize()) {
 
             Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize().weight(.1f)
+                contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(.1f)
             ) {
                 Image(
                     painter = painterResource(Res.drawable.levelselectbutton),
@@ -64,7 +64,7 @@ class LevelPage(var level: Int) : Screen {
 
             Row(modifier = Modifier.fillMaxSize().weight(1f)) {
                 LazyVerticalGrid(columns = GridCells.Fixed(4)) {
-                    items(75) {
+                    items(75) { it ->
                         Box(
                             contentAlignment = Alignment.Center,
                             modifier = Modifier.fillMaxSize().weight(1f).padding(top = 20.dp)
@@ -73,25 +73,21 @@ class LevelPage(var level: Int) : Screen {
                                 painter = painterResource(Res.drawable.levelbluebutton),
                                 contentDescription = null,
                                 contentScale = ContentScale.FillBounds,
-                                modifier = Modifier.height(60.dp).width(60.dp).clickable {
-                                    if (ans[it] == level) {
-                                        navigator!!.replace(BordPage(it))
-                                    }
-                                }
+                                modifier = Modifier.height(60.dp).width(60.dp)
                             )
 
                             Text(text = "${it + 1}", fontSize = 30.sp, color = Color.White)
 
-                            if (ans[it] == level) {
+                            if (HomePage.kp.getString("levelStatus$it", "lock") == clear) {
                                 Image(
                                     painter = painterResource(Res.drawable.right),
                                     contentDescription = null,
                                     contentScale = ContentScale.FillBounds,
-                                    modifier = Modifier.height(40.dp).width(40.dp)
-                                        .clickable(enabled = true) { }
+                                    modifier = Modifier.height(40.dp).width(40.dp).clickable {
+                                        navigator!!.replace(BordPage(it))
+                                    }
                                 )
-                            }
-                            else {
+                            } else if (HomePage.kp.getString("levelStatus$it", "lock") == lock) {
                                 Image(painter = painterResource(Res.drawable.levellock),
                                     contentDescription = null,
                                     contentScale = ContentScale.FillBounds,
@@ -99,29 +95,9 @@ class LevelPage(var level: Int) : Screen {
                                         enabled = false
                                     ) { }
                                 )
+                            } else if (HomePage.kp.getString("levelStatus$it", "lock") == skip) {
+                                Text(text = "${it + 1}", fontSize = 30.sp, color = Color.White)
                             }
-
-
-                            // try
-
-//                            if (image[level].toString() == sky.value) {
-//                                Image(
-//                                    painter = painterResource(Res.drawable.right),
-//                                    contentDescription = null,
-//                                    contentScale = ContentScale.FillBounds,
-//                                    modifier = Modifier.height(40.dp).width(40.dp)
-//                                )
-//                            } else {
-//                                Image(painter = painterResource(Res.drawable.levellock),
-//                                    contentDescription = null,
-//                                    contentScale = ContentScale.FillBounds,
-//                                    modifier = Modifier.height(40.dp).width(40.dp).clickable(
-//                                        enabled = false
-//                                    ) { }
-//                                )
-//                            }
-
-
                         }
                     }
                 }

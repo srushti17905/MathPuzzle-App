@@ -35,3 +35,11 @@ actual fun KotlinPrefrence.putInt(key: String, value: Int) {
     edit.putInt(key, value)
     edit.apply()
 }
+actual fun KotlinPrefrence.getString(key: String, defualt: String): String? {
+    return sp.getString(key, defualt)
+}
+
+actual fun KotlinPrefrence.putString(key: String, value: String) {
+    edit.putString(key, value)
+    edit.apply()
+}

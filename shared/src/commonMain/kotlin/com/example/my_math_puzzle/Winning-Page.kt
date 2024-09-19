@@ -95,7 +95,6 @@ class win(var level : Int ) : Screen {
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(60.dp).width(180.dp).clickable {
                         navigator3!!.push(HomePage())
-
                     }
                 )
                 winbutton("MAIN MENU")
