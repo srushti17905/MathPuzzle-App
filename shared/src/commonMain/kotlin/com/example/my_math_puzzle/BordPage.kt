@@ -267,6 +267,7 @@ val image = arrayOf(
     Res.drawable.leval75
 )
 
+
 class BordPage(var level: Int) : Screen {
     @Composable
     override fun Content() {
@@ -314,7 +315,7 @@ class BordPage(var level: Int) : Screen {
 
                                 BordPage(level++)
                                 sky.value = ""
-                            
+
                             HomePage.kp.putString("levelStatus${level - 1}", skip)
                         }
                     )
@@ -329,6 +330,8 @@ class BordPage(var level: Int) : Screen {
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(350.dp).width(320.dp)
                 )
+
+
             }
             Row(
                 modifier = Modifier.fillMaxSize().weight(.7f)

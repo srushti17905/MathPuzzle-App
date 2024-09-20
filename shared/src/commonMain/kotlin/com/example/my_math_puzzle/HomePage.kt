@@ -85,7 +85,7 @@ class HomePage : Screen {
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(60.dp).width(170.dp).clickable {
-                        navigator!!.push(LevelPage())
+                        navigator!!.push(LevelPage(level))
                         kp.putString("levelStatus${level}" , next)
                     })
                 button("LEVEL")

@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collection.mutableVectorOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,7 +32,7 @@ import com.example.my_shayari_app.levelselectbutton
 import com.example.my_shayari_app.right
 import org.jetbrains.compose.resources.painterResource
 
-class LevelPage : Screen {
+class LevelPage(var level: Int) : Screen {
     @Composable
     override fun Content() {
 
@@ -75,33 +76,31 @@ class LevelPage : Screen {
                             Text(text = "${it + 1}", fontSize = 30.sp, color = Color.White)
 
                             if (HomePage.kp.getString("levelStatus$it", "lock") == clear) {
-                                Image(
-                                    painter = painterResource(Res.drawable.right),
+                                Image(painter = painterResource(Res.drawable.right),
                                     contentDescription = null,
                                     contentScale = ContentScale.FillBounds,
                                     modifier = Modifier.height(40.dp).width(40.dp).clickable {
                                         navigator!!.replace(BordPage(it))
-                                    }
-                                )
+                                    })
                             } else if (HomePage.kp.getString("levelStatus$it", "lock") == lock) {
                                 Image(painter = painterResource(Res.drawable.levellock),
                                     contentDescription = null,
                                     contentScale = ContentScale.FillBounds,
                                     modifier = Modifier.height(40.dp).width(40.dp).clickable(
                                         enabled = false
-                                    ) { }
-                                )
-                            } else if (HomePage.kp.getString("levelStatus$it", "lock") == skip) {
-                                Text(
-                                    text = "${it + 1}",
+                                    ) { })
+                            } else if (HomePage.kp.getString(
+                                    "levelStatus$it", "lock"
+                                ) == skip
+                            ) {
+                                Text(text = "${it + 1}",
                                     fontSize = 30.sp,
                                     color = Color.White,
                                     modifier = Modifier.clickable {
                                         navigator?.replace(BordPage(it))
                                     })
                             } else if (HomePage.kp.getString("levelStatus$it", "lock") == next) {
-                                Text(
-                                    text = "${it + 1}",
+                                Text(text = "${it + 1}",
                                     fontSize = 30.sp,
                                     color = Color.White,
                                     modifier = Modifier.clickable {
