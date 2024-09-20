@@ -22,7 +22,6 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import com.example.my_math_puzzle.LocalStorage.KotlinPrefrence
 import com.example.my_math_puzzle.LocalStorage.getInt
 import com.example.my_math_puzzle.LocalStorage.getString
-import com.example.my_math_puzzle.LocalStorage.putInt
 import com.example.my_math_puzzle.LocalStorage.putString
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.background
@@ -33,12 +32,12 @@ import com.example.my_shayari_app.redbutton
 import com.example.my_shayari_app.share
 import com.example.my_shayari_app.yellowbutton
 import org.jetbrains.compose.resources.painterResource
-val lock = "lock"
-val skip = "skip"
-val clear = "clear"
-val num = "num"
+const val lock = "lock"
+const val skip = "skip"
+const val clear = "clear"
+const val next = "next"
 
-class HomePage() : Screen {
+class HomePage : Screen {
 
     companion object {
         var kp = KotlinPrefrence(getcontext = context)
@@ -86,7 +85,8 @@ class HomePage() : Screen {
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(60.dp).width(170.dp).clickable {
-                        navigator!!.push(LevelPage(level))
+                        navigator!!.push(LevelPage())
+                        kp.putString("levelStatus${level}" , next)
                     })
                 button("LEVEL")
             }

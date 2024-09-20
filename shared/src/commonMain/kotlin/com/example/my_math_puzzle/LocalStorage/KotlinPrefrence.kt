@@ -5,6 +5,6 @@ package com.example.my_math_puzzle.LocalStorage
 expect class KotlinPrefrence(getcontext: Any?)
 
 expect fun KotlinPrefrence.getInt(key : String,defualt : Int) : Int
-expect fun KotlinPrefrence.getString(key : String,defualt : String) : String?
+expect fun KotlinPrefrence.getString(key : String, default : String) : String?
 expect fun KotlinPrefrence.putInt(key : String,value : Int)
 expect fun KotlinPrefrence.putString(key : String,value : String)

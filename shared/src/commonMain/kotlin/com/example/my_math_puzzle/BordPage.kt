@@ -113,7 +113,7 @@ import com.example.my_shayari_app.plainyellowbutton
 import com.example.my_shayari_app.squearline
 import org.jetbrains.compose.resources.painterResource
 
-var ans = mutableListOf(
+var ans = arrayOf(
     1,
     2,
     3,
@@ -153,7 +153,8 @@ var ans = mutableListOf(
     37,
     38,
     39,
-    40, 41,
+    40,
+    41,
     42,
     43,
     44,
@@ -298,6 +299,9 @@ class BordPage(var level: Int) : Screen {
                 ) {
                     squear1("Level ${level + 1}")
                 }
+
+                // todo( level button )
+
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxSize().weight(.5f)
@@ -307,10 +311,11 @@ class BordPage(var level: Int) : Screen {
                         contentDescription = null,
                         contentScale = ContentScale.FillBounds,
                         modifier = Modifier.height(50.dp).width(50.dp).clickable {
-                            level += 1
-                            sky.value = ""
 
-                            HomePage.kp.putString("levelStatus${level - 1}" , skip)
+                                BordPage(level++)
+                                sky.value = ""
+                            
+                            HomePage.kp.putString("levelStatus${level - 1}", skip)
                         }
                     )
                 }

@@ -10,7 +10,7 @@ actual fun KotlinPrefrence.getInt(key: String, defualt: Int): Int {
 
 actual fun KotlinPrefrence.putInt(key: String, value: Int) {}
 actual fun KotlinPrefrence.getString(
-    key: String, defualt: String
+    key: String, default: String
 ): String? {
     return ""
 }

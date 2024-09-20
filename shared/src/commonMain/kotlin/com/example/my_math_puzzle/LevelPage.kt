@@ -11,12 +11,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -33,9 +30,8 @@ import com.example.my_shayari_app.levellock
 import com.example.my_shayari_app.levelselectbutton
 import com.example.my_shayari_app.right
 import org.jetbrains.compose.resources.painterResource
-import kotlin.math.log
 
-class LevelPage(var level: Int) : Screen {
+class LevelPage : Screen {
     @Composable
     override fun Content() {
 
@@ -96,8 +92,23 @@ class LevelPage(var level: Int) : Screen {
                                     ) { }
                                 )
                             } else if (HomePage.kp.getString("levelStatus$it", "lock") == skip) {
-                                Text(text = "${it + 1}", fontSize = 30.sp, color = Color.White)
+                                Text(
+                                    text = "${it + 1}",
+                                    fontSize = 30.sp,
+                                    color = Color.White,
+                                    modifier = Modifier.clickable {
+                                        navigator?.replace(BordPage(it))
+                                    })
+                            } else if (HomePage.kp.getString("levelStatus$it", "lock") == next) {
+                                Text(
+                                    text = "${it + 1}",
+                                    fontSize = 30.sp,
+                                    color = Color.White,
+                                    modifier = Modifier.clickable {
+                                        navigator?.replace(BordPage(it))
+                                    })
                             }
+
                         }
                     }
                 }

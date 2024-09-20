@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 
 // in android side
 
-actual class KotlinPrefrence actual constructor(var getcontext: Any?) {
+actual class KotlinPrefrence actual constructor(getcontext: Any?) {
 
     init {
 //        edit.putInt()
@@ -35,8 +35,8 @@ actual fun KotlinPrefrence.putInt(key: String, value: Int) {
     edit.putInt(key, value)
     edit.apply()
 }
-actual fun KotlinPrefrence.getString(key: String, defualt: String): String? {
-    return sp.getString(key, defualt)
+actual fun KotlinPrefrence.getString(key: String, default: String): String? {
+    return sp.getString(key, default)
 }
 
 actual fun KotlinPrefrence.putString(key: String, value: String) {
