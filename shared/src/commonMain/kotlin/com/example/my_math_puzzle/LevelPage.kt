@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import com.example.my_math_puzzle.LocalStorage.getString
+import com.example.my_math_puzzle.LocalStorage.putString
 import com.example.my_shayari_app.Res
 import com.example.my_shayari_app.levelbackground
 import com.example.my_shayari_app.levelbluebutton
@@ -91,14 +92,15 @@ class LevelPage : Screen {
                                         enabled = false
                                     ) { }
                                 )
-                            } else if (HomePage.kp.getString("levelStatus$it", "lock") == skip) {
-                                Text(
-                                    text = "${it + 1}",
-                                    fontSize = 30.sp,
-                                    color = Color.White,
-                                    modifier = Modifier.clickable {
-                                        navigator?.replace(BordPage(it))
-                                    })
+                            } else if (HomePage.kp.getString("levelStatus$it" , "lock") == skip) {
+                                    Text(
+                                        text = "${it + 1}",
+                                        fontSize = 30.sp,
+                                        color = Color.White,
+                                        modifier = Modifier.clickable {
+                                            navigator?.replace(BordPage(it))
+                                        })
+
                             } else if (HomePage.kp.getString("levelStatus$it", "lock") == next) {
                                 Text(
                                     text = "${it + 1}",
@@ -116,4 +118,5 @@ class LevelPage : Screen {
         }
     }
 }
+
 

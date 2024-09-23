@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -266,6 +267,7 @@ val image = arrayOf(
     Res.drawable.leval74,
     Res.drawable.leval75
 )
+var limage = mutableStateOf(Res.drawable.leval1)
 
 class BordPage(var level: Int) : Screen {
     @Composable
@@ -273,6 +275,7 @@ class BordPage(var level: Int) : Screen {
 
         val navigator2 = LocalNavigator.current
 
+        limage.value = image[level]
         Surface(modifier = Modifier.fillMaxSize()) {
             Image(
                 painter = painterResource(Res.drawable.background2),
@@ -311,11 +314,12 @@ class BordPage(var level: Int) : Screen {
                         contentDescription = null,
                         contentScale = ContentScale.FillBounds,
                         modifier = Modifier.height(50.dp).width(50.dp).clickable {
+                            level++
+                            limage.value = image[level]
 
-                                BordPage(level++)
-                                sky.value = ""
-                            
-                            HomePage.kp.putString("levelStatus${level - 1}", skip)
+                            if (HomePage.kp.getString("levelStatus${level - 1}", "lock") != clear) {
+                                HomePage.kp.putString("levelStatus${level - 1}", skip)
+                            }
                         }
                     )
                 }
@@ -324,11 +328,12 @@ class BordPage(var level: Int) : Screen {
                 contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize().weight(4f)
             ) {
                 Image(
-                    painter = painterResource(image[level]),
+                    painter = painterResource(limage.value),
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.height(350.dp).width(320.dp)
                 )
+
             }
             Row(
                 modifier = Modifier.fillMaxSize().weight(.7f)
